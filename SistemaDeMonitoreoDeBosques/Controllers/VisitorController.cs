@@ -1,5 +1,4 @@
-﻿// Api/Controllers/VisitorController.cs
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SistemaDeMonitoreoDeBosques.Api.Responses;
 using SistemaDeMonitoreoDeBosques.Core.CustomEntities;
@@ -42,10 +41,8 @@ namespace SistemaDeMonitoreoDeBosques.Api.Controllers
         [HttpPost("dto/mapper")]
         public async Task<IActionResult> Create([FromBody] VisitorDto dto)
         {
-            // Filtro de FluentValidation corre antes (rangos de fechas, CI, teléfonos, etc.)
             var entity = _mapper.Map<Visitor>(dto);
 
-            // Si mandas dto.HasVehicle = true y dto.Vehicle != null, el servicio inserta el vehículo y asigna VehicleId
             await _visitorService.InsertVisitorAsync(entity);
 
             var resultDto = _mapper.Map<VisitorDto>(entity);
@@ -58,7 +55,6 @@ namespace SistemaDeMonitoreoDeBosques.Api.Controllers
             var entity = await _visitorService.GetVisitorAsync(request.Id);
             if (entity == null) return NotFound("Visitante no encontrado");
 
-            // Mapear sobre la entidad existente para evitar reemplazos bruscos
             _mapper.Map(dto, entity);
             await _visitorService.UpdateVisitorAsync(entity);
 

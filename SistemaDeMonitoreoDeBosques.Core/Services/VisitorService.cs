@@ -1,5 +1,4 @@
-﻿// Core/Services/VisitorService.cs  (reemplaza el archivo; robusto)
-using SistemaDeMonitoreoDeBosques.Core.Entities;
+﻿using SistemaDeMonitoreoDeBosques.Core.Entities;
 using SistemaDeMonitoreoDeBosques.Core.Interfaces;
 
 namespace SistemaDeMonitoreoDeBosques.Core.Services

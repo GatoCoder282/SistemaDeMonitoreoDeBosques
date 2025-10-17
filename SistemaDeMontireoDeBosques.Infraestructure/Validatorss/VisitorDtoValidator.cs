@@ -35,14 +35,12 @@ namespace SistemaDeMonitoreoDeBosques.Infraestructure.Validators
                 .Must((dto, exit) => exit >= dto.EntryDate)
                 .WithMessage("La fecha de salida no puede ser menor a la de entrada");
 
-            // Lógica de vehículo coherente con tu servicio:
             When(x => x.HasVehicle, () =>
             {
                 RuleFor(x => x)
                     .Must(dto => dto.VehicleId.HasValue || dto.Vehicle != null)
                     .WithMessage("Marcaste HasVehicle pero no enviaste VehicleId ni objeto Vehicle");
 
-                // Si envían Vehicle en cascada, válidalo con el propio validador
                 When(x => x.Vehicle != null, () =>
                 {
                     RuleFor(x => x.Vehicle!).SetValidator(new VehicleDtoValidator());

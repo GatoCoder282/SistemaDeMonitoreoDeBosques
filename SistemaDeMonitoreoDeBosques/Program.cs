@@ -33,7 +33,6 @@ namespace SistemaDeMonitoreoDeBosques
             builder.Services.AddScoped<IVisitorService, VisitorService>();
             builder.Services.AddScoped<IVehicleService, VehicleService>();
 
-            // Validadores (usa el assembly donde están tus validators)
             builder.Services.AddValidatorsFromAssemblyContaining<VisitorDtoValidator>();
 
             // Servicio de validación

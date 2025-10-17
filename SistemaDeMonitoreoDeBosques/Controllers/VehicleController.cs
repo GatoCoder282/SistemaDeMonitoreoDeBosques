@@ -1,5 +1,4 @@
-﻿// Api/Controllers/VehicleController.cs
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SistemaDeMonitoreoDeBosques.Api.Responses;
 using SistemaDeMonitoreoDeBosques.Core.Entities;
@@ -43,7 +42,6 @@ namespace SistemaDeMonitoreoDeBosques.Api.Controllers
         [HttpPost("dto/mapper")]
         public async Task<IActionResult> Create([FromBody] VehicleDto dto)
         {
-            // Filtro de FluentValidation corre antes
             var entity = _mapper.Map<Vehicle>(dto);
             await _vehicleService.InsertVehicleAsync(entity);
             var resultDto = _mapper.Map<VehicleDto>(entity);

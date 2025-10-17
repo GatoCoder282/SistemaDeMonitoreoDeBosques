@@ -1,5 +1,4 @@
-﻿// Infraestructure/Filters/ValidationFilter.cs
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using SistemaDeMonitoreoDeBosques.Infraestructure.Validatorss;
